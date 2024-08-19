@@ -1,9 +1,8 @@
-// src/components/component.jsx
-import React from "react";
-import CurrencyForm from "./CurrencyForm";
-import useCurrencyConverter from "../utils/useCurrencyConverter"; 
+import "./container.css";
+import CurrencyForm from "../CurrencyForm/CurrencyForm";
+import useCurrencyConverter from "../../hooks/useCurrencyConverter";
 
-const Container = () => {
+function Container () {
   const { result, loading, handleConvert } = useCurrencyConverter();
   return (
     <div className="container">
@@ -12,9 +11,7 @@ const Container = () => {
         <CurrencyForm onConvert={handleConvert} />
         {loading && <span className="loader"></span>}
         <div>
-          <p id="calculatedValue" className="calculatedValue">
-            {result}
-          </p>
+          <p className="calculatedValue">{result}</p>
         </div>
       </main>
     </div>

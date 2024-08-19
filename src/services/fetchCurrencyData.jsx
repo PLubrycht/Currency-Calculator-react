@@ -1,4 +1,4 @@
-export const fetchCurrencyData = async (value, currency) => {
+export  async function fetchCurrencyData (value, currency)  {
   const response = await fetch("https://api.nbp.pl/api/exchangerates/tables/a");
   const data = await response.json();
   const rates = data?.[0]?.rates;

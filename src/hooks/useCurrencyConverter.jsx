@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { fetchCurrencyData } from "../services/fetchCurrencyData";
 
-const useCurrencyConverter = () => {
+function useCurrencyConverter () {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleConvert = async (value, currency) => {
+  async function handleConvert (value, currency)  {
     setLoading(true);
     try {
       const conversionResult = await fetchCurrencyData(value, currency);
