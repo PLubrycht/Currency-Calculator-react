@@ -1,22 +1,25 @@
 import { useState } from "react";
 import { fetchCurrencyData } from "../services/fetchCurrencyData";
 
-function useCurrencyConverter () {
+function useCurrencyConverter() {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  async function handleConvert (value, currency)  {
+  async function handleConvert(value, currency) {
     setLoading(true);
+    setError("");
     try {
       const conversionResult = await fetchCurrencyData(value, currency);
       setResult(conversionResult);
     } catch (error) {
-      alert("Error, cannot communicate with server.");
+      setError("Error fetching data from server.");
     } finally {
       setLoading(false);
     }
-  };
+  }
 
-  return { result, loading, handleConvert };
-};
+  return { result, loading, error, handleConvert };
+}
+
 export default useCurrencyConverter;
