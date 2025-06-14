@@ -1,5 +1,3 @@
-import { formatResult } from "../utils/formatResult";
-
 export async function fetchCurrencyData(value, currency) {
   const response = await fetch("https://api.nbp.pl/api/exchangerates/tables/a");
   const data = await response.json();
@@ -16,5 +14,5 @@ export async function fetchCurrencyData(value, currency) {
   }
 
   const rate = selectedRate.mid;
-  return formatResult(value, rate);
+  return (Number(value) * rate).toFixed(2) + " PLN";
 }
