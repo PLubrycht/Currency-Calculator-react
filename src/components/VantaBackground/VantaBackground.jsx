@@ -1,36 +1,37 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import NET from "vanta/dist/vanta.net.min";
 
 const VantaBackground = () => {
   const vantaRef = useRef(null);
-  const [vantaEffect, setVantaEffect] = useState(null);
+  const vantaEffectRef = useRef(null);
 
   useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        NET({
-          el: vantaRef.current,
-          THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.0,
-          minWidth: 200.0,
-          scale: 1.0,
-          scaleMobile: 1.0,
-          color: 0x3ff3ff,
-          backgroundColor: 0x23153c,
-          spacing: 12.0,
-          maxDistance: 27.0,
-        })
-      );
+    if (vantaEffectRef.current) {
+      vantaEffectRef.current.destroy();
     }
 
+    vantaEffectRef.current = NET({
+      el: vantaRef.current,
+      THREE,
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.0,
+      minWidth: 200.0,
+      scale: 1.0,
+      scaleMobile: 1.0,
+
+      color: 0xff9900,
+      backgroundColor: 0x111122,
+      spacing: 12.0,
+      maxDistance: 27.0,
+    });
+
     return () => {
-      if (vantaEffect) vantaEffect.destroy();
+      if (vantaEffectRef.current) vantaEffectRef.current.destroy();
     };
-  }, [vantaEffect]);
+  });
 
   return (
     <div
