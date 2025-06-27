@@ -27,7 +27,7 @@ src/
 
 ## 🚀 Getting Started
 1. Clone the repo  
-   `git clone https://github.com/yourusername/Currency-Calculator-react.git`
+   `git clone https://github.com/PLubrycht/Currency-Calculator-react.git`
 2. Install dependencies  
    `npm install`
 3. Start development server  
@@ -37,10 +37,9 @@ src/
 ![Preview](screenshot.png)
 
 ## 🌐 Live Demo
-[Click here to view the app on Netlify](https://your-app-link.netlify.app)
+[Click here to view the app on Netlify](https://currency-calculator-react.netlify.app/)
 
-## 🧪 Tests
-(see below for sample test setup)
+
 
 ## 📄 License
 [MIT](LICENSE)
